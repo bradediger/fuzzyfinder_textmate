@@ -20,6 +20,8 @@ There are several different variables that you may set in your .vimrc file that 
 * g:fuzzy_ignore - this is a delimited list of file glob patterns to ignore. Entries may be delimited using either semi-colons or commas.
 * g:fuzzy_matching_limit - this is the maximum number of items that will be matched, and defaults to 200. If the finder feels sluggish to you, you can reduce this to something smaller (100, or 50).
 
+For efficiency, the directories provided are never rescanned for changes. The :FuzzyFinderTextMateRefreshFiles command will force a rescan.
+
 Installation
 -----------------------
 First, make sure you have the Fuzzyfinder script[1]. Install that as per the instructions for that script.
