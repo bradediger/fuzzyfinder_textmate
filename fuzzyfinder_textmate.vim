@@ -49,8 +49,7 @@ endfunction
 " ====================================================================================
 
 command! -bang -narg=? -complete=file   FuzzyFinderTextMate   call FuzzyFinderTextMateLauncher(<q-args>, len(<q-bang>))
-
-command! FuzzyFinderTextMateRefreshFiles ruby finder.rescan!
+command! FuzzyFinderTextMateRefreshFiles ruby refresh_finder
   
 function! InstantiateTextMateMode() "{{{
 ruby << RUBY
@@ -103,6 +102,12 @@ ruby << RUBY
       ignore = VIM.evaluate("g:fuzzy_ignore").split(/[;,]/)
       FuzzyFileFinder.new(roots, ceiling, ignore)
     end
+  end
+
+  def refresh_finder
+    @finder = nil
+    finder
+    nil
   end
 RUBY
 
@@ -182,3 +187,4 @@ end "}}}
 call InstantiateTextMateMode()
 
 endif
+
